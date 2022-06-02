@@ -4,16 +4,16 @@
 
 //For example, for [1, 2, 2] it should return 9 because 1^2 + 2^2 + 2^2 = 9.
 
-int[] n = { 1, 2, 2 };
-Console.WriteLine(SquareSum(n));
-static int SquareSum(int[] n)
+public static class Kata
 {
-    int result = 0;
-
-    foreach (int num in n)
+    public static int SquareSum(int[] n)
     {
-        result += (num * num);
+        int sum = 0;
+        for (int i = 0; i < n.Length; i++)
+        {
+            n[i] = n[i] * n[i];
+            sum += n[i];
+        }
+        return sum;
     }
-
-    return result;
 }
