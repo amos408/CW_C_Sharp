@@ -27,25 +27,27 @@
 
 //Note:
 //If you are given an array with multiple answers, return the lowest correct index.
+
+
+using System;
 public class Kata
 {
   public static int FindEvenIndex(int[] arr)
   {
     //Code goes here!
-     var fHalfSum = 0;
+  for (var a = 0; a < arr.Length; a++)
+            {
+                int lft = 0, rght = 0;
 
-        for (int i = 0; i < arr.Length - 1; i++)
-        {
-            var sHalfSum = 0;
+                for (var b = 0; b < a; b++)
+                    lft += arr[b];
 
-            fHalfSum += arr[i];
+                for (var c = a + 1; c < arr.Length; c++)
+                    rght += arr[c];
 
-            for (int j = i + 2; j < arr.Length; j++)
-                sHalfSum += arr[j];
+                if (lft == rght) return a;
+            }
 
-            if (fHalfSum == sHalfSum)
-                return i + 1;
-        }
-        return -1;
+            return -1;
   }
 }
