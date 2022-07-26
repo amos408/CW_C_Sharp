@@ -20,41 +20,26 @@
 
 
 using System;
+using System.Collections.Generic;
 public class SumSquaredDivisors 
 {
 	public static string listSquared(long m, long n)
 	{
-	 if (n-m<0)
-            {
-                return null;
-            }
+	    var result = new List<string>();
 
-            if (m<0||n<0)
+            for (long number = m; number <= n; number++)
             {
-                return null;
-            }
-            double sumdivisor = 0;
-            string stroutput = "";
-            for (long k = m; k <= n; k++)
-            {
-                for (int l = 1; l <= k; l++)
+                var divisors = new List<int>();
+                long sum = 0;
+                for (int div = 1; div <= number; div++)
                 {
-                    if (k % l == 0)
-                    {
-                        sumdivisor += l * l;
-                    }
+                    if (number % div == 0)
+                        sum += (div * div);
                 }
-                if (Math.Sqrt(sumdivisor) == Convert.ToInt32(Math.Sqrt(sumdivisor)))
-                {
-                    stroutput += "[" + k + ", " + sumdivisor + "]";
-                    stroutput += ", ";
-                }
-                sumdivisor = 0;
+
+                if (Math.Sqrt(sum) % 2 == 0 || sum == 1)
+                    result.Add(string.Format("[{0}, {1}]",number,sum));
             }
-            if (stroutput=="")
-            {
-                return null;
-            }
-            return string.Format("[{0}]", stroutput.Remove(stroutput.Length - 2, 2));
-	}
+            return string.Format("[{0}]", string.Join(", ", result));
+    }
 }
