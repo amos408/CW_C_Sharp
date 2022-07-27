@@ -23,23 +23,24 @@ using System;
 using System.Collections.Generic;
 public class SumSquaredDivisors 
 {
-	public static string listSquared(long m, long n)
-	{
-	    var result = new List<string>();
+  
+  public static string listSquared(long m, long n)
+  {
+            var result = new List<string>();
 
             for (long number = m; number <= n; number++)
             {
                 var divisors = new List<int>();
                 long sum = 0;
-                for (int div = 1; div <= number; div++)
+                for (int ls = 1; ls <= number; ls++)
                 {
-                    if (number % div == 0)
-                        sum += (div * div);
+                    if (number % ls == 0)
+                        sum += (ls * ls);
                 }
 
                 if (Math.Sqrt(sum) % 2 == 0 || sum == 1)
                     result.Add(string.Format("[{0}, {1}]",number,sum));
             }
             return string.Format("[{0}]", string.Join(", ", result));
-    }
+  }
 }
